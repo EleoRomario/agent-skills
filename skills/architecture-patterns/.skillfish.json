@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "architecture-patterns",
+  "owner": "secondsky",
+  "repo": "claude-skills",
+  "path": "plugins/architecture-patterns/skills/architecture-patterns",
+  "branch": "main",
+  "sha": "be982db171ea44fb1f172b94a66930b7c2a3333f",
+  "source": "manual"
+}

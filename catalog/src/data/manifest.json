@@ -1,0 +1,599 @@
+{
+  "generatedAt": "2026-09-25T16:51:46.913Z",
+  "owner": "eleoromario",
+  "repo": "agent-skills",
+  "package": "eleoromario/agent-skills",
+  "site": "https://skills.eleoromario.dev",
+  "installAll": "npx skills add eleoromario/agent-skills -g -y",
+  "palette": [
+    {
+      "name": "Blush Petal",
+      "accent": "#F7C6D9",
+      "accentInk": "#8f4568"
+    },
+    {
+      "name": "Peach Fuzz",
+      "accent": "#F9D2B3",
+      "accentInk": "#8f5a30"
+    },
+    {
+      "name": "Buttercream Glow",
+      "accent": "#FBE9A5",
+      "accentInk": "#7a6818"
+    },
+    {
+      "name": "Mint Whip",
+      "accent": "#CFECCF",
+      "accentInk": "#3a6e45"
+    },
+    {
+      "name": "Sage Cloud",
+      "accent": "#D8E8D0",
+      "accentInk": "#4a6642"
+    },
+    {
+      "name": "Sky Whisper",
+      "accent": "#C9E4F6",
+      "accentInk": "#356484"
+    },
+    {
+      "name": "Powder Bluebell",
+      "accent": "#AECBEF",
+      "accentInk": "#3a5790"
+    },
+    {
+      "name": "Lilac Drift",
+      "accent": "#D8C8F2",
+      "accentInk": "#624a8f"
+    },
+    {
+      "name": "Lavender Frost",
+      "accent": "#E6DAF5",
+      "accentInk": "#655484"
+    },
+    {
+      "name": "Cotton Candy Mist",
+      "accent": "#F3CCE9",
+      "accentInk": "#844a76"
+    }
+  ],
+  "categories": [
+    {
+      "id": "dotnet",
+      "label": ".NET",
+      "slug": "DOTNET",
+      "accent": "#C9E4F6",
+      "accentInk": "#356484"
+    },
+    {
+      "id": "architecture",
+      "label": "Arquitectura",
+      "slug": "ARCHITECTURE",
+      "accent": "#AECBEF",
+      "accentInk": "#3a5790"
+    },
+    {
+      "id": "design",
+      "label": "Diseño",
+      "slug": "DESIGN",
+      "accent": "#F9D2B3",
+      "accentInk": "#8f5a30"
+    },
+    {
+      "id": "narrative",
+      "label": "Narrativa",
+      "slug": "NARRATIVE",
+      "accent": "#F7C6D9",
+      "accentInk": "#8f4568"
+    },
+    {
+      "id": "tooling",
+      "label": "Tooling",
+      "slug": "TOOLING",
+      "accent": "#CFECCF",
+      "accentInk": "#3a6e45"
+    }
+  ],
+  "skills": [
+    {
+      "id": "architecture-patterns",
+      "name": "architecture-patterns",
+      "title": "Architecture Patterns",
+      "description": "Implement proven backend architecture patterns including Clean Architecture, Hexagonal Architecture, and Domain-Driven Design. Use when architecting complex backend systems or refactoring existing applications for better maintainability.",
+      "excerpt": "Master proven backend architecture patterns including Clean Architecture, Hexagonal Architecture, and Domain Driven Design to build maintainable, testable, and scalable systems.…",
+      "categories": [
+        "architecture"
+      ],
+      "primary": "architecture",
+      "categorySlug": "ARCHITECTURE",
+      "accent": "#AECBEF",
+      "accentInk": "#3a5790",
+      "palette": "Powder Bluebell",
+      "badge": "ARCH",
+      "snippet": {
+        "lang": "bash",
+        "lines": [
+          "app/",
+          "├── domain/           # Entities & business rules",
+          "│   ├── entities/",
+          "│   ├── value_objects/"
+        ]
+      },
+      "install": "npx skills add eleoromario/agent-skills@architecture-patterns -g -y",
+      "path": "skills/architecture-patterns",
+      "hasExtras": true
+    },
+    {
+      "id": "authentication",
+      "name": "authentication",
+      "title": "Authentication",
+      "description": "Authentication and authorization for ASP.NET Core. Covers JWT bearer tokens, OpenID Connect, ASP.NET Identity, authorization policies, role and claim-based authorization, and API key authentication. Load this skill when implementing login, protecting endpoints, designing authorization rules, or when the user mentions \"auth\", \"JWT\", \"bearer token\", \"OIDC\", \"OpenID Connect\", \"Identity\", \"claims\", \"roles\", \"authorize\", \"RequireAuthorization\", \"API key\", or \"cookie auth\".",
+      "excerpt": "1. Use ASP.NET Identity for user management — Don't build your own user store. Identity handles password hashing, lockout, two factor, email confirmation, and (since .NET 10)…",
+      "categories": [
+        "dotnet"
+      ],
+      "primary": "dotnet",
+      "categorySlug": "DOTNET",
+      "accent": "#C9E4F6",
+      "accentInk": "#356484",
+      "palette": "Sky Whisper",
+      "badge": "C#",
+      "snippet": {
+        "lang": "csharp",
+        "lines": [
+          "// Program.cs",
+          "builder.Services.AddAuthentication(JwtBearerDefaults.Aut",
+          "    .AddJwtBearer(options =>",
+          "    {"
+        ]
+      },
+      "install": "npx skills add eleoromario/agent-skills@authentication -g -y",
+      "path": "skills/authentication",
+      "hasExtras": false
+    },
+    {
+      "id": "biome-git-hooks",
+      "name": "biome-git-hooks",
+      "title": "Biome Git Hooks",
+      "description": "Sets up Biome (lint+format), Husky, lint-staged, and commitlint (conventional commits) in any JS/TS project or monorepo package. Use when scaffolding a new frontend/Node app, adding git hooks, replacing ESLint/Prettier, or when the user mentions Biome, Husky, commitlint, lint-staged, pre-commit, or quality hooks.",
+      "excerpt": "Install this quality stack in the package root that owns package.json and the git hooks (usually repo root; in monorepos prefer the workspace root). | Signal | Action | | | | |…",
+      "categories": [
+        "tooling"
+      ],
+      "primary": "tooling",
+      "categorySlug": "TOOLING",
+      "accent": "#CFECCF",
+      "accentInk": "#3a6e45",
+      "palette": "Mint Whip",
+      "badge": "JS",
+      "snippet": {
+        "lang": "bash",
+        "lines": [
+          "- [ ] 1. Detect package manager + existing tooling",
+          "- [ ] 2. Install deps (dev)",
+          "- [ ] 3. Biome init + config",
+          "- [ ] 4. package.json scripts + lint-staged"
+        ]
+      },
+      "install": "npx skills add eleoromario/agent-skills@biome-git-hooks -g -y",
+      "path": "skills/biome-git-hooks",
+      "hasExtras": true
+    },
+    {
+      "id": "clean-architecture",
+      "name": "clean-architecture",
+      "title": "Clean Architecture",
+      "description": "Clean Architecture for .NET applications. Covers the 4-project layout (Domain, Application, Infrastructure, Api), dependency inversion, use case handlers, domain entities with behavior, and infrastructure as a plugin. Load this skill when building a project with Clean Architecture, discussing layered architecture, dependency inversion, use cases, or when the architecture-advisor recommends Clean Architecture.",
+      "excerpt": "1. Dependency inversion is the foundation — All dependencies point inward. Domain has zero project references. Application references only Domain. Infrastructure references…",
+      "categories": [
+        "dotnet",
+        "architecture"
+      ],
+      "primary": "dotnet",
+      "categorySlug": "DOTNET",
+      "accent": "#C9E4F6",
+      "accentInk": "#356484",
+      "palette": "Sky Whisper",
+      "badge": "C#",
+      "snippet": {
+        "lang": "csharp",
+        "lines": [
+          "src/",
+          "  MyApp.Domain/",
+          "    Entities/",
+          "      Order.cs                    # Entity with behavior"
+        ]
+      },
+      "install": "npx skills add eleoromario/agent-skills@clean-architecture -g -y",
+      "path": "skills/clean-architecture",
+      "hasExtras": false
+    },
+    {
+      "id": "dependency-injection",
+      "name": "dependency-injection",
+      "title": "Dependency Injection",
+      "description": "Dependency injection patterns for .NET 10. Covers service lifetimes, keyed services, the decorator pattern, factory pattern, and common DI pitfalls. Load this skill when registering services, resolving lifetime issues, designing service composition, or when the user mentions \"DI\", \"dependency injection\", \"service registration\", \"AddScoped\", \"AddTransient\", \"AddSingleton\", \"keyed services\", \"decorator\", \"Scrutor\", \"IServiceCollection\", or \"captive dependency\".",
+      "excerpt": "1. Constructor injection is the default — Inject dependencies through the constructor (primary constructors make this clean). No service locator, no property injection. 2. Match…",
+      "categories": [
+        "dotnet"
+      ],
+      "primary": "dotnet",
+      "categorySlug": "DOTNET",
+      "accent": "#C9E4F6",
+      "accentInk": "#356484",
+      "palette": "Sky Whisper",
+      "badge": "C#",
+      "snippet": {
+        "lang": "csharp",
+        "lines": [
+          "// Registration",
+          "builder.Services.AddKeyedScoped<INotificationService, Em",
+          "builder.Services.AddKeyedScoped<INotificationService, Sm",
+          "builder.Services.AddKeyedScoped<INotificationService, Pu"
+        ]
+      },
+      "install": "npx skills add eleoromario/agent-skills@dependency-injection -g -y",
+      "path": "skills/dependency-injection",
+      "hasExtras": false
+    },
+    {
+      "id": "dotnet-bootstrap",
+      "name": "dotnet-bootstrap",
+      "title": "Dotnet Bootstrap",
+      "description": "Bootstraps a Cursor-ready .NET backend monolith project: creates .cursor/rules, sets architecture defaults, and points the agent to the curated .NET skills. Use when starting a new .NET backend project, scaffolding a monolith API, \"nuevo proyecto .NET\", \"iniciar monolito\", \"bootstrap .NET\", or setting up .cursor for an existing ASP.NET Core backend.",
+      "excerpt": "Prepara un monolito backend .NET para trabajar bien en Cursor. No aplica a frontend. Repo vacío o greenfield .NET “Nuevo proyecto .NET / monolito / API” Añadir .cursor a un…",
+      "categories": [
+        "dotnet"
+      ],
+      "primary": "dotnet",
+      "categorySlug": "DOTNET",
+      "accent": "#C9E4F6",
+      "accentInk": "#356484",
+      "palette": "Sky Whisper",
+      "badge": "C#",
+      "snippet": {
+        "lang": "csharp",
+        "lines": [
+          "- [ ] Confirmar: backend .NET (no frontend)",
+          "- [ ] Preguntar nombre del proyecto y arquitectura si no",
+          "- [ ] Crear .cursor/rules/project.mdc",
+          "- [ ] (Opcional) Crear AGENTS.md corto en la raíz"
+        ]
+      },
+      "install": "npx skills add eleoromario/agent-skills@dotnet-bootstrap -g -y",
+      "path": "skills/dotnet-bootstrap",
+      "hasExtras": false
+    },
+    {
+      "id": "dotnet-init",
+      "name": "dotnet-init",
+      "title": "Dotnet Init",
+      "description": "Interactive project initialization. Detects project type, asks architecture questions, and generates a customized CLAUDE.md — no manual template copying. Use when: \"init project\", \"setup project\", \"initialize\", \"new project setup\", \"generate CLAUDE.md\", \"configure for dotnet-claude-kit\", or starting Claude Code on a fresh or existing .NET codebase.",
+      "excerpt": "Interactively initializes a .NET project for use with dotnet claude kit. Detects the project type, asks targeted questions about architecture and tech stack, then generates a…",
+      "categories": [
+        "dotnet"
+      ],
+      "primary": "dotnet",
+      "categorySlug": "DOTNET",
+      "accent": "#C9E4F6",
+      "accentInk": "#356484",
+      "palette": "Sky Whisper",
+      "badge": "C#",
+      "snippet": {
+        "lang": "csharp",
+        "lines": [
+          "→ Look for .slnx / .sln files",
+          "→ If found, scan .csproj files for SDK type:",
+          "  - Microsoft.NET.Sdk.Web → web-api or blazor-app",
+          "  - Microsoft.NET.Sdk.Worker → worker-service"
+        ]
+      },
+      "install": "npx skills add eleoromario/agent-skills@dotnet-init -g -y",
+      "path": "skills/dotnet-init",
+      "hasExtras": false
+    },
+    {
+      "id": "dotnet-setup-throughput",
+      "name": "dotnet-setup-throughput",
+      "title": "Dotnet Setup Throughput",
+      "description": "Audits and hardens .NET Setup/framework layers that wrap every request for DX (auth, user context, AutoInclude, generic repos, SaveChanges interceptors) but tax latency and DB load. Also defines Setup contracts for List/Detail DTOs, PagedRequest/PagedResponse, SQL projection, and external ID lookups (SUNAT RUC / RENIEC DNI cache-aside). Use when reviewing Setup throughput, per-request DB cost, auth/session cache, AutoInclude, thin vs fat reads, pagination, ListDto, DetailDto, SUNAT, RENIEC, RUC, DNI lookup, ApiPeru, HybridCache/Redis, NullPermissionCache, peaje fijo por request, or high load.",
+      "excerpt": "Framework wrappers that run once in code (middleware, AutoInclude, interceptors, generic list repos, shared paging) often run on every request/query . That optimizes developer…",
+      "categories": [
+        "dotnet"
+      ],
+      "primary": "dotnet",
+      "categorySlug": "DOTNET",
+      "accent": "#C9E4F6",
+      "accentInk": "#356484",
+      "palette": "Sky Whisper",
+      "badge": "C#",
+      "snippet": {
+        "lang": "csharp",
+        "lines": [
+          "Setup throughput:",
+          "- [ ] 1. Map fixed per-request path (auth → context → ha",
+          "- [ ] 2. Count DB roundtrips before business logic",
+          "- [ ] 3. Classify read defaults (tracking, AutoInclude, "
+        ]
+      },
+      "install": "npx skills add eleoromario/agent-skills@dotnet-setup-throughput -g -y",
+      "path": "skills/dotnet-setup-throughput",
+      "hasExtras": true
+    },
+    {
+      "id": "ef-core",
+      "name": "ef-core",
+      "title": "Ef Core",
+      "description": "Entity Framework Core patterns for .NET 10. Covers DbContext configuration, migrations workflow, interceptors, compiled queries, ExecuteUpdateAsync, ExecuteDeleteAsync, value converters, and query optimization. Load this skill when working with databases, writing queries, managing schema changes, or when the user mentions \"EF Core\", \"Entity Framework\", \"DbContext\", \"migration\", \"LINQ query\", \"database\", \"SQL\", \"N+1\", \"Include\", \"split query\", \"value converter\", \"interceptor\", or \"compiled query\".",
+      "excerpt": "1. EF Core is the default ORM — Use it unless you have a specific reason not to (extreme perf, legacy DB without FK constraints). See ADR 003. 2. DbContext is a unit of work —…",
+      "categories": [
+        "dotnet"
+      ],
+      "primary": "dotnet",
+      "categorySlug": "DOTNET",
+      "accent": "#C9E4F6",
+      "accentInk": "#356484",
+      "palette": "Sky Whisper",
+      "badge": "C#",
+      "snippet": {
+        "lang": "csharp",
+        "lines": [
+          "// Persistence/AppDbContext.cs",
+          "public class AppDbContext(DbContextOptions<AppDbContext>",
+          "{",
+          "    public DbSet<Order> Orders => Set<Order>();"
+        ]
+      },
+      "install": "npx skills add eleoromario/agent-skills@ef-core -g -y",
+      "path": "skills/ef-core",
+      "hasExtras": false
+    },
+    {
+      "id": "error-handling",
+      "name": "error-handling",
+      "title": "Error Handling",
+      "description": "Error handling strategy for .NET 10 applications. Covers the Result pattern, ProblemDetails (RFC 9457), global exception handling, FluentValidation, and structured error responses. Load this skill when implementing error handling, validation, or designing API error contracts, or when the user mentions \"error handling\", \"Result pattern\", \"ProblemDetails\", \"exception\", \"validation\", \"FluentValidation\", \"error response\", \"global exception handler\", or \"RFC 9457\".",
+      "excerpt": "1. Use the Result pattern for expected failures — Don't throw exceptions for things like \"order not found\" or \"validation failed\". These are expected outcomes, not exceptional…",
+      "categories": [
+        "dotnet"
+      ],
+      "primary": "dotnet",
+      "categorySlug": "DOTNET",
+      "accent": "#C9E4F6",
+      "accentInk": "#356484",
+      "palette": "Sky Whisper",
+      "badge": "C#",
+      "snippet": {
+        "lang": "csharp",
+        "lines": [
+          "public class Result",
+          "{",
+          "    public bool IsSuccess { get; }",
+          "    public bool IsFailure => !IsSuccess;"
+        ]
+      },
+      "install": "npx skills add eleoromario/agent-skills@error-handling -g -y",
+      "path": "skills/error-handling",
+      "hasExtras": false
+    },
+    {
+      "id": "find-docs",
+      "name": "find-docs",
+      "title": "Find Docs",
+      "description": "Retrieves up-to-date documentation, API references, and code examples for any developer technology. Use this skill whenever the user asks about a specific library, framework, SDK, CLI tool, or cloud service — even for well-known ones like React, Next.js, Prisma, Express, Tailwind, Django, or Spring Boot. Your training data may not reflect recent API changes or version updates. Always use for: API syntax questions, configuration options, version migration issues, \"how do I\" questions mentioning a library name, debugging that involves library-specific behavior, setup instructions, and CLI tool usage. Use even when you think you know the answer — do not rely on training data for API details, signatures, or configuration options as they are frequently outdated. Always verify against current docs. Prefer this over web search for library documentation and API details.",
+      "excerpt": "Retrieve current documentation and code examples for any library using the Context7 CLI. Run commands with npx ctx7@latest so setup always uses the latest CLI without a global…",
+      "categories": [
+        "tooling"
+      ],
+      "primary": "tooling",
+      "categorySlug": "TOOLING",
+      "accent": "#CFECCF",
+      "accentInk": "#3a6e45",
+      "palette": "Mint Whip",
+      "badge": "JS",
+      "snippet": {
+        "lang": "bash",
+        "lines": [
+          "npx ctx7@latest library <name> \"<query>\"",
+          "npx ctx7@latest docs <libraryId> \"<query>\""
+        ]
+      },
+      "install": "npx skills add eleoromario/agent-skills@find-docs -g -y",
+      "path": "skills/find-docs",
+      "hasExtras": false
+    },
+    {
+      "id": "impeccable",
+      "name": "impeccable",
+      "title": "Impeccable",
+      "description": "Use when the user wants to design, redesign, shape, critique, audit, polish, clarify, distill, harden, optimize, adapt, animate, colorize, extract, or otherwise improve a frontend interface. Covers websites, landing pages, dashboards, product UI, app shells, components, forms, settings, onboarding, and empty states. Handles UX review, visual hierarchy, information architecture, cognitive load, accessibility, performance, responsive behavior, theming, anti-patterns, typography, fonts, spacing, layout, alignment, color, motion, micro-interactions, UX copy, error states, edge cases, i18n, and reusable design systems or tokens. Also use for bland designs that need to become bolder or more delightful, loud designs that should become quieter, live browser iteration on UI elements, or ambitious visual effects that should feel technically extraordinary. Not for backend-only or non-UI tasks.",
+      "excerpt": "This skill gives you the tools and permission to create design that earns to be called out of distribution craft: Whereas before, your design work would have been safe, timid and…",
+      "categories": [
+        "design"
+      ],
+      "primary": "design",
+      "categorySlug": "DESIGN",
+      "accent": "#F9D2B3",
+      "accentInk": "#8f5a30",
+      "palette": "Peach Fuzz",
+      "badge": "UI",
+      "snippet": {
+        "lang": "bash",
+        "lines": [
+          "npx skills add \\",
+          "  eleoromario/agent-skills@…",
+          "  -g -y"
+        ]
+      },
+      "install": "npx skills add eleoromario/agent-skills@impeccable -g -y",
+      "path": "skills/impeccable",
+      "hasExtras": true
+    },
+    {
+      "id": "minimal-api",
+      "name": "minimal-api",
+      "title": "Minimal Api",
+      "description": ".NET 10 minimal APIs — the default for building HTTP endpoints. Covers MapGroup, endpoint filters, TypedResults, OpenAPI metadata, parameter binding, and route conventions. Load this skill when creating API endpoints, configuring routing, setting up OpenAPI documentation, or when the user mentions \"endpoint\", \"MapGet\", \"MapPost\", \"MapGroup\", \"TypedResults\", \"route\", \"minimal API\", \"OpenAPI\", \"swagger\", \"rate limiting\", or \"output caching\".",
+      "excerpt": "1. Minimal APIs are the default — Use controllers only when migrating legacy code. Minimal APIs are lighter, faster, and compose well with any architecture style. 2. Group…",
+      "categories": [
+        "dotnet"
+      ],
+      "primary": "dotnet",
+      "categorySlug": "DOTNET",
+      "accent": "#C9E4F6",
+      "accentInk": "#356484",
+      "palette": "Sky Whisper",
+      "badge": "C#",
+      "snippet": {
+        "lang": "csharp",
+        "lines": [
+          "// Extensions/IEndpointGroup.cs",
+          "public interface IEndpointGroup",
+          "{",
+          "    void Map(IEndpointRouteBuilder app);"
+        ]
+      },
+      "install": "npx skills add eleoromario/agent-skills@minimal-api -g -y",
+      "path": "skills/minimal-api",
+      "hasExtras": false
+    },
+    {
+      "id": "modern-csharp",
+      "name": "modern-csharp",
+      "title": "Modern Csharp",
+      "description": "Modern C# language features for .NET 10 and C# 14. Covers primary constructors, collection expressions, the field keyword, extension members, records, pattern matching, spans, and raw string literals. Load this skill when writing any new C# code, reviewing existing code for modernization, using \"modern C#\", \"C# 14\", \"primary constructor\", \"collection expression\", \"records\", \"pattern matching\", \"span\", \"field keyword\", or \"extension members\". Always loaded as the baseline for all agents.",
+      "excerpt": "1. Use the newest stable features — C 14 is the target. Prefer language level constructs over library workarounds. 2. Readability over cleverness — Pattern matching and expression…",
+      "categories": [
+        "dotnet"
+      ],
+      "primary": "dotnet",
+      "categorySlug": "DOTNET",
+      "accent": "#C9E4F6",
+      "accentInk": "#356484",
+      "palette": "Sky Whisper",
+      "badge": "C#",
+      "snippet": {
+        "lang": "csharp",
+        "lines": [
+          "// GOOD — field keyword for validation in auto-property",
+          "public class Product",
+          "{",
+          "    public string Name"
+        ]
+      },
+      "install": "npx skills add eleoromario/agent-skills@modern-csharp -g -y",
+      "path": "skills/modern-csharp",
+      "hasExtras": false
+    },
+    {
+      "id": "russell-storyscope",
+      "name": "russell-storyscope",
+      "title": "Russell Storyscope",
+      "description": "Knowledge base from \"StoryScope: Investigating idiosyncrasies in AI fiction\" by Russell et al. Use when applying StoryScope’s frameworks for AI fiction detection, narrative features, authorship attribution, originality/rarity proxies, studying the paper, or referencing its concepts.",
+      "excerpt": "<! argument hint: [topic, framework name, or chapter number] Author : Jenna Russell, Rishanth Rajendhran, Chau Minh Pham, Mohit Iyyer, John Wieting | Pages : ~30 | Chapters : 8 |…",
+      "categories": [
+        "narrative"
+      ],
+      "primary": "narrative",
+      "categorySlug": "NARRATIVE",
+      "accent": "#F7C6D9",
+      "accentInk": "#8f4568",
+      "palette": "Blush Petal",
+      "badge": "MD",
+      "snippet": {
+        "lang": "bash",
+        "lines": [
+          "npx skills add \\",
+          "  eleoromario/agent-skills@…",
+          "  -g -y"
+        ]
+      },
+      "install": "npx skills add eleoromario/agent-skills@russell-storyscope -g -y",
+      "path": "skills/russell-storyscope",
+      "hasExtras": true
+    },
+    {
+      "id": "security-scan",
+      "name": "security-scan",
+      "title": "Security Scan",
+      "description": "Deep security scanning for .NET applications across 6 layers: vulnerable packages, secrets detection, OWASP code patterns, auth configuration, CORS policy, and data protection. Produces severity-rated findings with specific remediation steps. Load this skill when: \"security scan\", \"security audit\", \"check for vulnerabilities\", \"find secrets\", \"OWASP\", \"auth review\", \"CORS check\", \"security review\", \"penetration test prep\", \"CVE check\", \"vulnerability scan\", \"hardcoded password\", \"data protection\", \"security posture\".",
+      "excerpt": "Runs a defense in depth static scan across 6 layers. A project with zero CVEs can still have hardcoded secrets, SQL injection, and missing auth — each layer catches a different…",
+      "categories": [
+        "dotnet"
+      ],
+      "primary": "dotnet",
+      "categorySlug": "DOTNET",
+      "accent": "#C9E4F6",
+      "accentInk": "#356484",
+      "palette": "Sky Whisper",
+      "badge": "C#",
+      "snippet": {
+        "lang": "csharp",
+        "lines": [
+          "User: /security-scan before we ship",
+          "Claude: Running all 6 layers...",
+          "| Layer | Status | Findings |",
+          "|-------|--------|----------|"
+        ]
+      },
+      "install": "npx skills add eleoromario/agent-skills@security-scan -g -y",
+      "path": "skills/security-scan",
+      "hasExtras": true
+    },
+    {
+      "id": "storyscope-ai-audit",
+      "name": "storyscope-ai-audit",
+      "title": "Storyscope Ai Audit",
+      "description": "Audits fiction or narrative prose for AI-likeness using StoryScope discourse-level narrative signals (thematic explicitness, causal tidiness, temporality, agency, intertext, reader address)—not brittle style tells like em-dashes. Use when the user asks if a text is AI-written, wants an AI vs human narrative score, StoryScope audit, detector narrativo, or to evaluate how AI-like a story/essay is.",
+      "excerpt": "<! argument hint: [pegar texto | ruta de archivo | \"compara A vs B\"] Evalúa textos con las señales narrativas del paper StoryScope (Russell et al., arXiv:2604.03136). No es un…",
+      "categories": [
+        "narrative"
+      ],
+      "primary": "narrative",
+      "categorySlug": "NARRATIVE",
+      "accent": "#F7C6D9",
+      "accentInk": "#8f4568",
+      "palette": "Blush Petal",
+      "badge": "MD",
+      "snippet": {
+        "lang": "bash",
+        "lines": [
+          "npx skills add \\",
+          "  eleoromario/agent-skills@…",
+          "  -g -y"
+        ]
+      },
+      "install": "npx skills add eleoromario/agent-skills@storyscope-ai-audit -g -y",
+      "path": "skills/storyscope-ai-audit",
+      "hasExtras": true
+    },
+    {
+      "id": "testing",
+      "name": "testing",
+      "title": "Testing",
+      "description": "Testing strategy for .NET 10 applications. Covers xUnit v3, WebApplicationFactory for integration tests, Testcontainers for real database testing, Verify for snapshot testing, and the AAA pattern. Load this skill when writing tests, setting up test infrastructure, reviewing test coverage, or when the user mentions \"test\", \"xUnit\", \"WebApplicationFactory\", \"Testcontainers\", \"integration test\", \"unit test\", \"bUnit\", \"snapshot test\", \"Verify\", \"test coverage\", \"AAA pattern\", \"WireMock\", or \"FakeTimeProvider\".",
+      "excerpt": "1. Integration tests are the highest value tests — A single WebApplicationFactory test covers routing, binding, validation, business logic, and persistence in one shot. Start here…",
+      "categories": [
+        "dotnet"
+      ],
+      "primary": "dotnet",
+      "categorySlug": "DOTNET",
+      "accent": "#C9E4F6",
+      "accentInk": "#356484",
+      "palette": "Sky Whisper",
+      "badge": "C#",
+      "snippet": {
+        "lang": "csharp",
+        "lines": [
+          "public class OrderServiceTests",
+          "{",
+          "    [Fact]",
+          "    public async Task CreateOrder_WithValidItems_Returns"
+        ]
+      },
+      "install": "npx skills add eleoromario/agent-skills@testing -g -y",
+      "path": "skills/testing",
+      "hasExtras": false
+    }
+  ]
+}

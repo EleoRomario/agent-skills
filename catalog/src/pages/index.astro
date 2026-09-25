@@ -1,0 +1,303 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SkillCard from "../components/SkillCard.astro";
+import manifest from "../data/manifest.json";
+
+const { skills, categories, installAll, package: pkg } = manifest;
+---
+
+<BaseLayout>
+  <section class="hero">
+    <h1 class="hero-brand">e-skills</h1>
+    <p class="hero-lead">
+      Catálogo de agent skills para Cursor y Claude. Instálalas con{" "}
+      <code class="icode">npx skills</code>{" "}
+      desde el repo privado{" "}
+      <code class="icode">{pkg}</code>.
+    </p>
+    <div class="hero-actions">
+      <button class="btn btn-primary" type="button" data-copy={installAll}>
+        Copiar: instalar todas
+      </button>
+      <a class="btn" href="#catalog">{skills.length} skills</a>
+    </div>
+    <p class="note">
+      Selecciona skills en el catálogo para instalar solo esas. Repo privado:
+      necesitas{" "}
+      <code class="icode">gh auth login</code>.
+    </p>
+  </section>
+
+  <section id="catalog">
+    <div class="toolbar">
+      <label class="sr-only" for="q">Buscar skill</label>
+      <input
+        class="search"
+        type="search"
+        id="q"
+        name="q"
+        placeholder="Buscar skill…"
+        autocomplete="off"
+        enterkeyhint="search"
+      />
+      <div class="filters" id="filters" role="group" aria-label="Categorías">
+        <button class="chip" type="button" data-cat="all" aria-pressed="true">
+          Todas
+        </button>
+        {
+          categories.map((c) => (
+            <button
+              class="chip"
+              type="button"
+              data-cat={c.id}
+              aria-pressed="false"
+              style={
+                c.accent
+                  ? `--chip-accent: ${c.accent}; --chip-accent-ink: ${c.accentInk || c.accent}`
+                  : undefined
+              }
+            >
+              {c.label}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="skill-grid" id="grid" data-package={pkg}>
+      {skills.map((s) => <SkillCard skill={s} />)}
+    </div>
+    <p class="empty" id="empty" hidden>
+      Ninguna skill coincide con el filtro.
+    </p>
+  </section>
+
+  <div class="select-bar" id="select-bar" hidden>
+    <p class="select-bar-count">
+      <strong id="select-count">0</strong> seleccionadas
+    </p>
+    <code class="select-bar-cmd" id="select-cmd"></code>
+    <div class="select-bar-actions">
+      <button class="btn" type="button" id="select-clear">Limpiar</button>
+      <button class="btn btn-primary" type="button" id="select-copy">
+        Copiar instalación
+      </button>
+    </div>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    var q = document.getElementById("q");
+    var grid = document.getElementById("grid");
+    var empty = document.getElementById("empty");
+    var filters = document.getElementById("filters");
+    var bar = document.getElementById("select-bar");
+    var countEl = document.getElementById("select-count");
+    var cmdEl = document.getElementById("select-cmd");
+    var clearBtn = document.getElementById("select-clear");
+    var copyBtn = document.getElementById("select-copy");
+    if (!grid || !filters) return;
+
+    var pkg = grid.getAttribute("data-package") || "eleoromario/agent-skills";
+    var activeCat = "all";
+    var selected = {};
+
+    function selectedIds() {
+      return Object.keys(selected).filter(function (id) {
+        return selected[id];
+      });
+    }
+
+    function buildCommand(ids) {
+      if (!ids.length) return "";
+      if (ids.length === 1) {
+        return "npx skills add " + pkg + "@" + ids[0] + " -g -y";
+      }
+      return (
+        "npx skills add " + pkg + " -s " + ids.join(",") + " -g -y"
+      );
+    }
+
+    function flyToInstall(card) {
+      if (!card || !bar || !copyBtn) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      var fromEl = card.querySelector(".select-toggle") || card;
+      var from = fromEl.getBoundingClientRect();
+
+      // Mostrar barra ya para poder medir el destino
+      bar.hidden = false;
+      document.body.classList.add("has-selection");
+      var to = copyBtn.getBoundingClientRect();
+
+      var accent =
+        getComputedStyle(card).getPropertyValue("--card-accent").trim() ||
+        "#AFC9BF";
+      var ink =
+        getComputedStyle(card).getPropertyValue("--card-accent-ink").trim() ||
+        "#356484";
+
+      var ghost = document.createElement("span");
+      ghost.className = "fly-chip";
+      ghost.setAttribute("aria-hidden", "true");
+      ghost.style.setProperty("--fly-accent", accent);
+      ghost.style.setProperty("--fly-ink", ink);
+      ghost.style.left = from.left + from.width / 2 - 11 + "px";
+      ghost.style.top = from.top + from.height / 2 - 11 + "px";
+      document.body.appendChild(ghost);
+
+      // force layout then animate
+      ghost.getBoundingClientRect();
+      var dx = to.left + to.width / 2 - (from.left + from.width / 2);
+      var dy = to.top + to.height / 2 - (from.top + from.height / 2);
+      ghost.style.setProperty("--fly-x", dx + "px");
+      ghost.style.setProperty("--fly-y", dy + "px");
+      ghost.classList.add("is-flying");
+
+      var done = false;
+      function finish() {
+        if (done) return;
+        done = true;
+        ghost.remove();
+        copyBtn.classList.remove("fly-land");
+        void copyBtn.offsetWidth;
+        copyBtn.classList.add("fly-land");
+      }
+
+      ghost.addEventListener("animationend", finish);
+      setTimeout(finish, 700);
+    }
+
+    function syncSelectionUI() {
+      var ids = selectedIds();
+      var n = ids.length;
+      if (countEl) countEl.textContent = String(n);
+      if (cmdEl) cmdEl.textContent = buildCommand(ids);
+      if (bar) {
+        bar.hidden = n === 0;
+        document.body.classList.toggle("has-selection", n > 0);
+      }
+
+      var cards = grid.querySelectorAll(".skill-card");
+      for (var i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        var id = card.getAttribute("data-id") || "";
+        var on = !!selected[id];
+        card.setAttribute("data-selected", on ? "true" : "false");
+        var toggle = card.querySelector(".select-toggle");
+        if (toggle) toggle.setAttribute("aria-pressed", on ? "true" : "false");
+      }
+    }
+
+    function toggleSelect(id, card) {
+      if (!id) return;
+      var turningOn = !selected[id];
+      selected[id] = turningOn;
+      if (!selected[id]) delete selected[id];
+      if (turningOn && card) flyToInstall(card);
+      syncSelectionUI();
+    }
+
+    function apply() {
+      var query = q && "value" in q ? String(q.value).trim().toLowerCase() : "";
+      var cards = grid.querySelectorAll(".skill-card");
+      var visible = 0;
+
+      for (var i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        var name = card.getAttribute("data-name") || "";
+        var desc = card.getAttribute("data-desc") || "";
+        var id = card.getAttribute("data-id") || "";
+        var cats = (card.getAttribute("data-cats") || "").split(",");
+        var matchQ =
+          !query ||
+          name.indexOf(query) !== -1 ||
+          desc.indexOf(query) !== -1 ||
+          id.indexOf(query) !== -1;
+        var matchC = activeCat === "all" || cats.indexOf(activeCat) !== -1;
+        var show = matchQ && matchC;
+        card.classList.toggle("is-hidden", !show);
+        card.hidden = !show;
+        if (show) visible++;
+      }
+
+      if (empty) {
+        empty.hidden = visible !== 0;
+        empty.style.display = visible === 0 ? "block" : "none";
+      }
+      grid.setAttribute("data-empty", visible === 0 ? "true" : "false");
+    }
+
+    if (q) {
+      q.addEventListener("input", apply);
+      q.addEventListener("search", apply);
+    }
+
+    filters.addEventListener("click", function (e) {
+      var btn = e.target.closest(".chip");
+      if (!btn || !filters.contains(btn)) return;
+      activeCat = btn.getAttribute("data-cat") || "all";
+      var chips = filters.querySelectorAll(".chip");
+      for (var i = 0; i < chips.length; i++) {
+        chips[i].setAttribute(
+          "aria-pressed",
+          chips[i] === btn ? "true" : "false",
+        );
+      }
+      apply();
+    });
+
+    grid.addEventListener("click", function (e) {
+      if (e.target.closest(".card-title-link")) return;
+      var toggle = e.target.closest(".select-toggle");
+      var card = e.target.closest(".skill-card");
+      if (toggle && card) {
+        e.preventDefault();
+        toggleSelect(card.getAttribute("data-id"), card);
+        return;
+      }
+      if (card && !e.target.closest("a")) {
+        toggleSelect(card.getAttribute("data-id"), card);
+      }
+    });
+
+    if (clearBtn) {
+      clearBtn.addEventListener("click", function () {
+        selected = {};
+        syncSelectionUI();
+      });
+    }
+
+    if (copyBtn) {
+      copyBtn.addEventListener("click", function () {
+        var text = buildCommand(selectedIds());
+        if (!text || !navigator.clipboard) return;
+        navigator.clipboard.writeText(text).then(function () {
+          var prev = copyBtn.textContent;
+          copyBtn.textContent = "Copiado";
+          setTimeout(function () {
+            copyBtn.textContent = prev;
+          }, 1400);
+        });
+      });
+    }
+
+    document.addEventListener("click", function (e) {
+      var btn = e.target.closest("[data-copy]");
+      if (!btn) return;
+      var text = btn.getAttribute("data-copy") || "";
+      if (!text || !navigator.clipboard) return;
+      navigator.clipboard.writeText(text).then(function () {
+        var prev = btn.textContent;
+        btn.textContent = "Copiado";
+        setTimeout(function () {
+          btn.textContent = prev;
+        }, 1400);
+      });
+    });
+
+    apply();
+    syncSelectionUI();
+  })();
+</script>

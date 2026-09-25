@@ -1,0 +1,63 @@
+---
+import "@fontsource/quicksand/400.css";
+import "@fontsource/quicksand/500.css";
+import "@fontsource/quicksand/600.css";
+import "@fontsource/quicksand/700.css";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "e-skills",
+  description = "Catálogo privado de agent skills para Cursor y Claude.",
+} = Astro.props;
+const pageTitle = title === "e-skills" ? title : `${title} · e-skills`;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=chillax@1,400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="/">
+        <span class="brand-mark">◈</span>
+        <span class="brand-text">e-skills</span>
+      </a>
+      <nav class="site-nav">
+        <a href="/#catalog">Catálogo</a>
+        <a href="https://github.com/eleoromario/agent-skills" rel="noopener noreferrer">Repo</a>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <p>
+        e-skills · Instalación vía <code class="icode">npx skills</code> ·
+        <a href="https://skills.eleoromario.dev">skills.eleoromario.dev</a>
+      </p>
+    </footer>
+  </body>
+</html>

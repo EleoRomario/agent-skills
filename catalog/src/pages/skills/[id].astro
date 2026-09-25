@@ -1,0 +1,152 @@
+---
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import manifest from "../../data/manifest.json";
+
+export function getStaticPaths() {
+  return manifest.skills.map((s) => ({
+    params: { id: s.id },
+    props: { skill: s },
+  }));
+}
+
+const { skill } = Astro.props;
+const label = Object.fromEntries(
+  manifest.categories.map((c) => [c.id, c.label]),
+);
+
+const skillPath = join(
+  process.cwd(),
+  "..",
+  "skills",
+  skill.id,
+  "SKILL.md",
+);
+let body = "";
+try {
+  const raw = await readFile(skillPath, "utf8");
+  body = raw.replace(/^---[\s\S]*?---\r?\n/, "");
+} catch {
+  body = skill.description;
+}
+
+// Minimal markdown → HTML (headings, code, paragraphs)
+function renderMarkdown(md: string): string {
+  const lines = md.split(/\r?\n/);
+  const out: string[] = [];
+  let inCode = false;
+  let codeBuf: string[] = [];
+  let para: string[] = [];
+
+  const flushPara = () => {
+    if (!para.length) return;
+    const text = para.join(" ").trim();
+    if (text) out.push(`<p>${inline(text)}</p>`);
+    para = [];
+  };
+
+  const inline = (t: string) =>
+    t
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/`([^`]+)`/g, '<code class="icode">$1</code>')
+      .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+
+  for (const line of lines) {
+    if (line.startsWith("```")) {
+      if (inCode) {
+        out.push(
+          `<pre><code>${codeBuf.join("\n").replace(/&/g, "&amp;").replace(/</g, "&lt;")}</code></pre>`,
+        );
+        codeBuf = [];
+        inCode = false;
+      } else {
+        flushPara();
+        inCode = true;
+      }
+      continue;
+    }
+    if (inCode) {
+      codeBuf.push(line);
+      continue;
+    }
+    if (/^###\s+/.test(line)) {
+      flushPara();
+      out.push(`<h3>${inline(line.replace(/^###\s+/, ""))}</h3>`);
+    } else if (/^##\s+/.test(line)) {
+      flushPara();
+      out.push(`<h2>${inline(line.replace(/^##\s+/, ""))}</h2>`);
+    } else if (/^#\s+/.test(line)) {
+      flushPara();
+      out.push(`<h2>${inline(line.replace(/^#\s+/, ""))}</h2>`);
+    } else if (!line.trim()) {
+      flushPara();
+    } else if (/^[-*]\s+/.test(line)) {
+      flushPara();
+      out.push(`<li>${inline(line.replace(/^[-*]\s+/, ""))}</li>`);
+    } else {
+      para.push(line.trim());
+    }
+  }
+  flushPara();
+  if (inCode) {
+    out.push(
+      `<pre><code>${codeBuf.join("\n").replace(/&/g, "&amp;").replace(/</g, "&lt;")}</code></pre>`,
+    );
+  }
+  return out.join("\n");
+}
+
+const html = renderMarkdown(body);
+---
+
+<BaseLayout title={skill.name} description={skill.description}>
+  <article class="detail-head">
+    <p>
+      <a href="/#catalog">← Catálogo</a>
+    </p>
+    <h1>{skill.name}</h1>
+    <p>{skill.description}</p>
+    <div class="tags">
+      {
+        skill.categories.map((id) => (
+          <span class="tag">{label[id] ?? id}</span>
+        ))
+      }
+    </div>
+  </article>
+
+  <div class="install-box">
+    <code id="install-cmd">{skill.install}</code>
+    <button class="btn btn-primary" type="button" data-copy={skill.install}
+      >Copiar comando</button
+    >
+  </div>
+  <p class="note">
+    Requiere acceso al repo privado{" "}
+    <code class="icode">{manifest.package}</code>.
+  </p>
+
+  <div class="prose" set:html={html} />
+</BaseLayout>
+
+<script>
+  document.querySelectorAll("[data-copy]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const text = btn.getAttribute("data-copy") ?? "";
+      try {
+        await navigator.clipboard.writeText(text);
+        const prev = btn.textContent;
+        btn.textContent = "Copiado";
+        setTimeout(() => {
+          btn.textContent = prev;
+        }, 1400);
+      } catch {
+        /* ignore */
+      }
+    });
+  });
+</script>
