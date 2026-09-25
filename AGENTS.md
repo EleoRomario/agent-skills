@@ -1,6 +1,6 @@
 # e-skills
 
-Repo privado de skills + catálogo en https://skills.eleoromario.dev.
+Repo **público** de skills + catálogo en https://skills.eleoromario.dev.
 
 ## Convenciones
 
@@ -8,7 +8,7 @@ Repo privado de skills + catálogo en https://skills.eleoromario.dev.
 - Tras crear o editar skills, ejecutar `npm run sync` para regenerar `manifest.json`.
 - La web (`catalog/`) es estática (Astro); no añadir backend ni auth en v1.
 - No publicar skills de terceros ni las de Omarchy del sistema.
-- El repo es **privado**: la web es pública, pero `npx skills add` solo funciona para quien tenga acceso GitHub al repo.
+- El repo es **público**: cualquiera con el link de la web puede instalar con `npx skills add`.
 
 ## Stack
 

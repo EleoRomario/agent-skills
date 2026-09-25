@@ -1,6 +1,6 @@
 # e-skills
 
-Catálogo privado de **agent skills** para Cursor y Claude Code.
+Catálogo público de **agent skills** para Cursor y Claude Code.
 
 - **Web:** https://skills.eleoromario.dev  
 - **Paquete:** `eleoromario/agent-skills`  
@@ -8,10 +8,9 @@ Catálogo privado de **agent skills** para Cursor y Claude Code.
 
 ## Instalar
 
-Necesitas acceso de lectura a este repo (es privado) y sesión de GitHub en la máquina:
+Cualquiera con el link puede instalar (repo público):
 
 ```bash
-gh auth login   # si aún no estás autenticado
 npx skills add eleoromario/agent-skills@authentication -g -y
 ```
 
@@ -19,6 +18,12 @@ Instalar todas:
 
 ```bash
 npx skills add eleoromario/agent-skills -g -y
+```
+
+Solo algunas (desde la web, selección múltiple):
+
+```bash
+npx skills add eleoromario/agent-skills -s authentication,ef-core -g -y
 ```
 
 Listar sin instalar:

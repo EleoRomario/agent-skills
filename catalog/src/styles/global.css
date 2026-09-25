@@ -113,6 +113,7 @@ main,
 
 .site-nav {
   display: flex;
+  align-items: center;
   gap: 1.25rem;
   font-family: var(--font-mono);
   font-size: 0.8rem;
@@ -125,6 +126,31 @@ main,
 
 .site-nav a:hover {
   color: var(--ink);
+}
+
+.nav-github {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  border-radius: 8px;
+  padding: 0.2rem;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.nav-github:hover {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--morning-sky) 65%, white);
+  transform: translateY(-1px);
+}
+
+.github-icon {
+  width: 1.35rem;
+  height: 1.35rem;
+  display: block;
 }
 
 main {

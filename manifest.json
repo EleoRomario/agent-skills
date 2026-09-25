@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-25T16:51:46.913Z",
+  "generatedAt": "2026-09-25T16:59:17.482Z",
   "owner": "eleoromario",
   "repo": "agent-skills",
   "package": "eleoromario/agent-skills",
@@ -71,13 +71,6 @@
       "slug": "ARCHITECTURE",
       "accent": "#AECBEF",
       "accentInk": "#3a5790"
-    },
-    {
-      "id": "design",
-      "label": "Diseño",
-      "slug": "DESIGN",
-      "accent": "#F9D2B3",
-      "accentInk": "#8f5a30"
     },
     {
       "id": "narrative",
@@ -401,33 +394,6 @@
       "install": "npx skills add eleoromario/agent-skills@find-docs -g -y",
       "path": "skills/find-docs",
       "hasExtras": false
-    },
-    {
-      "id": "impeccable",
-      "name": "impeccable",
-      "title": "Impeccable",
-      "description": "Use when the user wants to design, redesign, shape, critique, audit, polish, clarify, distill, harden, optimize, adapt, animate, colorize, extract, or otherwise improve a frontend interface. Covers websites, landing pages, dashboards, product UI, app shells, components, forms, settings, onboarding, and empty states. Handles UX review, visual hierarchy, information architecture, cognitive load, accessibility, performance, responsive behavior, theming, anti-patterns, typography, fonts, spacing, layout, alignment, color, motion, micro-interactions, UX copy, error states, edge cases, i18n, and reusable design systems or tokens. Also use for bland designs that need to become bolder or more delightful, loud designs that should become quieter, live browser iteration on UI elements, or ambitious visual effects that should feel technically extraordinary. Not for backend-only or non-UI tasks.",
-      "excerpt": "This skill gives you the tools and permission to create design that earns to be called out of distribution craft: Whereas before, your design work would have been safe, timid and…",
-      "categories": [
-        "design"
-      ],
-      "primary": "design",
-      "categorySlug": "DESIGN",
-      "accent": "#F9D2B3",
-      "accentInk": "#8f5a30",
-      "palette": "Peach Fuzz",
-      "badge": "UI",
-      "snippet": {
-        "lang": "bash",
-        "lines": [
-          "npx skills add \\",
-          "  eleoromario/agent-skills@…",
-          "  -g -y"
-        ]
-      },
-      "install": "npx skills add eleoromario/agent-skills@impeccable -g -y",
-      "path": "skills/impeccable",
-      "hasExtras": true
     },
     {
       "id": "minimal-api",
