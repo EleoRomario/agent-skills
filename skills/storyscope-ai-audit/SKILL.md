@@ -1,121 +1,121 @@
 ---
 name: storyscope-ai-audit
 description: >-
-  Audits fiction or narrative prose for AI-likeness using StoryScope discourse-level
-  narrative signals (thematic explicitness, causal tidiness, temporality, agency,
-  intertext, reader address)—not brittle style tells like em-dashes. Use when the user
-  asks if a text is AI-written, wants an AI vs human narrative score, StoryScope audit,
-  detector narrativo, or to evaluate how AI-like a story/essay is.
+  Audits academic research writing (theses, papers, proposals, Cap. I–III style
+  sections) for AI-likeness using discourse-level structural signals inspired by
+  StoryScope—argument tidiness, hortatory overclaim, missing tensions/limits,
+  generic vs named citations, promotional vision vs measurable purpose—not brittle
+  style tells. Use when evaluating if a tesis, paper, planteamiento, justificación,
+  marco or academic chapter sounds AI-written, or to score AI-likeness of research prose.
 ---
 
-<!-- argument-hint: [pegar texto | ruta de archivo | "compara A vs B"] -->
+<!-- argument-hint: [pegar texto | ruta PDF/MD | capítulo | "compara A vs B"] -->
 
-# StoryScope AI Narrative Audit
+# StoryScope AI Audit — Investigación académica
 
-Evalúa textos con las señales **narrativas** del paper *StoryScope* (Russell et al., arXiv:2604.03136).  
-No es un detector forense ni prueba legal. Es una **auditoría explicable** orientada a ficción/prosa narrativa (~idealmente >1.5k palabras; con textos cortos baja la confianza).
+Evalúa **prosa de investigación profesional** (tesis de posgrado, papers, planes de transformación digital, planteamientos, justificaciones, marcos).
 
-Para profundidad teórica del paper, carga también `russell-storyscope`.
+Inspirado en la idea de StoryScope (Russell et al., arXiv:2604.03136): priorizar **decisiones de discurso/estructura** difíciles de “maquillar”, no señales de estilo (em-dashes, “delve”, ritmo).  
+La rúbrica de este skill está **adaptada al género académico**; no uses ejes de ficción (subplots, cuarta pared, emoción corporal, setting psicológico).
+
+No es detector forense ni prueba de autoría legal.
 
 ## Cuándo aplicar
 
-- “¿Este texto es de IA?”
-- “Puntúa qué tan AI-like es”
-- Auditoría editorial / originalidad narrativa
-- Comparar dos versiones (humana vs modelo, o borrador vs editado)
+- ¿Este capítulo / paper / planteamiento suena a IA?
+- Comparar borrador vs versión editada
+- Revisión editorial antes de entregar tesis o artículo
+- Auditar Cap. I (planteamiento), justificación, objetivos, marco, metodología narrativa
 
 ## Qué NO hacer
 
-- No bases el veredicto en em-dashes, “delve”, “tapestry”, ritmo de frases o vocabulario genérico (señales de estilo frágiles).
-- No digas “es IA al 100%” ni “humano certificado”.
-- No uses esto como prueba de copyright o autoría legal.
-- Si el texto no es narrativo (código, JSON, lista técnica), dilo y limita el alcance o rechaza el audit.
+- No puntuar con criterios de novela/cuento.
+- No bases el veredicto en em-dashes, listas de tres, formalidad genérica o vocabulario “IA”.
+- No digas “es IA al 100%” / “humano certificado”.
+- No uses el score como prueba de plagio o copyright.
+- Si el input es código, tablas puras o solo bibliografía, limita el alcance.
 
 ## Flujo (obligatorio)
 
-1. **Leer el texto completo** (o archivo indicado). Si supera ~8k palabras, muestrear inicio + 2–3 secciones medias + cierre, y anotar que el scoring es por muestra.
-2. **Clasificar género**: ficción / no ficción narrativa / otro. Ajustar confianza.
-3. **Puntuar las 10 dimensiones** de [rubric.md](rubric.md) en escala **1–5** (1 = humano-típico, 5 = IA-típico según StoryScope).
-4. **Calcular score**:
-   - `AI_likeness = media aritmética de las 10 dimensiones` (1.0–5.0)
-   - `AI_pct = (AI_likeness - 1) / 4 * 100` (0–100%)
-5. **Emitir el informe** con la plantilla de abajo.
-6. **Citar evidencia**: 1–2 citas cortas o paráfrasis por dimensión crítica (no pegues párrafos largos del texto).
+1. Leer el texto (o capítulo indicado). Si > ~8k palabras, muestrear inicio + secciones medias + cierre y declararlo.
+2. Confirmar que es **prosa académica de investigación**. Si es ficción, avisar y redirigir a criterios literarios (skill `russell-storyscope`) o adaptar con advertencia.
+3. Puntuar las **10 dimensiones** de [rubric.md](rubric.md) en **1–5** (1 = humano-académico típico / rigurosidad situada; 5 = default IA-académico / brochure).
+4. Calcular:
+   - `AI_likeness = media de dimensiones válidas` (1.0–5.0)
+   - `AI_pct = (AI_likeness - 1) / 4 * 100`
+5. Emitir el informe con la plantilla.
+6. Evidencia: 1–2 anclas breves por dimensión crítica (sin pegar párrafos largos).
 
-### Bandas de interpretación
+### Bandas
 
 | AI_likeness | Lectura |
 |-------------|---------|
-| 1.0–2.2 | Predominio de patrones humanos (StoryScope) |
+| 1.0–2.2 | Predominio de prosa de investigación situada / tensionada |
 | 2.3–3.2 | Mixto / ambiguo |
-| 3.3–4.2 | Predominio de patrones IA |
-| 4.3–5.0 | Fuertemente alineado con defaults narrativos IA |
+| 3.3–4.2 | Predominio de defaults “IA-académicos” |
+| 4.3–5.0 | Fuertemente alineado a brochure / overclaim |
 
 Confianza:
-- **Alta**: ficción ≥ ~3k palabras, señales consistentes
-- **Media**: 1–3k palabras o señales mixtas
-- **Baja**: <1k palabras, no narrativo, o solo un eje extremo
+- **Alta**: sección ≥ ~2k palabras, un género claro (planteamiento, marco, etc.)
+- **Media**: 800–2k palabras o señales mixtas
+- **Baja**: <800 palabras, solo bullets, o mezcla caótica de géneros
 
 ## Plantilla de salida
 
 ```markdown
-## Auditoría StoryScope (narrativa)
+## Auditoría StoryScope (investigación académica)
 
-**Texto**: <título o “pegado” / ruta>
-**Tipo**: <ficción | narrativa no ficción | otro>
-**AI-likeness**: <X.X>/5  (~<NN>% hacia polos IA)
-**Banda**: <humano-típico | mixto | predominio IA | fuerte IA>
-**Confianza**: <alta | media | baja> — <motivo en 1 frase>
+**Texto**: <título / archivo / capítulo>
+**Tipo**: <planteamiento | justificación | objetivos | marco | metodología | paper | mixto>
+**AI-likeness**: <X.X>/5  (~<NN>% hacia polos IA-académicos)
+**Banda**: <situada | mixto | predominio IA-académico | fuerte brochure>
+**Confianza**: <alta | media | baja> — <1 frase>
 
 ### Score por dimensión
-| Dimensión | Score (1=humano … 5=IA) | Evidencia breve |
-|-----------|-------------------------|-----------------|
-| 1 Temática explícita / moralizante | | |
-| 2 Unidad temática / subplots | | |
-| 3 Agencia y resolución | | |
-| 4 Cadena causal / tidy plot | | |
-| 5 Temporalidad (lineal ↔ discontinua) | | |
-| 6 Emoción (cuerpo/setting ↔ etiquetas/ambigüedad) | | |
-| 7 Densidad sensorial / setting-espejo | | |
-| 8 Intertextualidad | | |
-| 9 Lectura / cuarta pared | | |
-| 10 Ambigüedad moral del protagonista | | |
+| Dimensión | Score (1=situado … 5=IA-académico) | Evidencia breve |
+|-----------|-------------------------------------|-----------------|
+| 1 Overclaim hortatorio / moralina | | |
+| 2 Monorriel argumental vs tensiones | | |
+| 3 Cierre teleológico del problema | | |
+| 4 Cadena causal demasiado limpia | | |
+| 5 Propósito-promesa vs propósito-medible | | |
+| 6 Hedging y límites metodológicos | | |
+| 7 Anclaje local / datos situados | | |
+| 8 Intertexto nombrado vs ecos genéricos | | |
+| 9 Homogeneidad de voz / plantilla | | |
+| 10 Trade-offs y riesgos omitidos | | |
 
 ### Lectura global
-<3–6 frases: qué empuja hacia IA, qué empuja hacia humano>
+<3–6 frases>
 
-### Si quisieras “humanizar” (opcional)
-- <2–4 cambios estructurales concretos, no de estilo cosmétique>
+### Si quisieras “humanizar” (estructura académica)
+- <2–4 cambios estructurales concretos>
+
+### Comparación (si hay versión previa)
+| Versión | AI-likeness | Banda |
+|---------|-------------|-------|
 
 ### Límites
-Heurística StoryScope; no sustituye clasificador entrenado ni peritaje.
+Heurística estructural adaptada de StoryScope al género académico; no es el clasificador del paper ni peritaje.
 ```
 
-## Reglas de scoring rápidas
+## Mapa rápido (1 = mejor rigor situado, 5 = más “IA brochure”)
 
-Ver detalle en [rubric.md](rubric.md). Resumen:
+| # | Más situado (↓) | Más IA-académico (↑) |
+|---|-----------------|----------------------|
+| 1 | Afirma con mesura | Sermón de inclusión/innovación/justicia |
+| 2 | Varias líneas que pueden conflictuar | Todo empuja a la misma tesis-solución |
+| 3 | Problema queda parcialmente abierto | La solución “cierra” el drama social |
+| 4 | Condiciones, excepciones, contraejemplos | Problema→síntoma→solución sin fricción |
+| 5 | Objetivos medibles y acotados | Escena visionaria (entrevista perfecta, etc.) |
+| 6 | Hedging, limitaciones explícitas | Certeza absoluta, cero fricción |
+| 7 | Lugar, muestra, dialecto, cifras locales | “A nivel global / la sociedad” genérico |
+| 8 | Autores, años, venues nombrados | “Estudios demuestran” sin ancla |
+| 9 | Irregularidad útil, matices | Párrafos plantilla intercambiables |
+| 10 | Riesgos, fallos, costos ocultos | Solo beneficios y RSE |
 
-| # | Más humano (↓) | Más IA (↑) |
-|---|----------------|------------|
-| 1 | Tema implícito | Narrador explica la lección / moral |
-| 2 | Subplots que dialogan o contrastan | Track único, “no subplots” |
-| 3 | Destino externo / final ambiguo | Protagonista elige + aceptación interna limpia |
-| 4 | Causas flojas, cabos sueltos | Cadena causal continua y ordenada |
-| 5 | Saltos, flashbacks, revelación que relee el pasado | Cronología lineal clue→reveal |
-| 6 | Etiquetas emocionales / ambigüedad | Emoción casi siempre corporal |
-| 7 | Setting funcional, sensorial moderado | Setting psicológico + sensorial denso (olor, etc.) |
-| 8 | Obras/autores nombrados | Solo ecos vagos |
-| 9 | “Tú / querido lector”, meta | Nunca rompe la cuarta pared |
-| 10 | Protagonista moralmente ambivalente | Polaridad moral clara |
+Si una dimensión no aplica (p. ej. sección solo de ecuaciones), `N/A` y excluir de la media.
 
-Si una dimensión **no aplica** (p. ej. sin intertexto posible), marca `N/A` y exclúyela de la media (recalcula sobre N aplicables). Anótalo.
+## Relación con StoryScope (paper)
 
-## Comparar dos textos
-
-Evalúa A y B con la misma rúbrica. Tabla lado a lado + Δ AI_likeness. No declares ganador “más humano” sin mostrar dimensiones.
-
-## Relación con el paper
-
-- Señales = **core narrative features** (no estilo).
-- En el paper, ~30 core features ~84.8% macro-F1; set narrativo completo ~93.2%. Esta skill es una **aproximación cualitativa** de esos ejes, no el clasificador XGBoost.
-- Código/datos de autores: https://github.com/jenna-russell/storyscope
+El paper midió ficción. Este skill **reutiliza la lógica** (estructura > estilo; over-determinación; tidy plot; rareza/diversidad argumental) y la traduce a convenciones de investigación. Para el paper original: `russell-storyscope`.

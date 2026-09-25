@@ -1,152 +1,160 @@
-# Rúbrica StoryScope — AI Narrative Audit
+# Rúbrica — AI audit para investigación académica
 
-Escala por dimensión: **1 = patrón humano-típico**, **5 = patrón IA-típico** (según hallazgos StoryScope).  
-Usa enteros; medio punto solo si estás entre dos anclas claras.
+Escala: **1 = prosa académica situada / tensionada**, **5 = default IA-académico (brochure, overclaim, monorriel)**.  
+Enteros; medio punto solo entre anclas claras.
 
----
-
-## 1. Temática explícita / moralizante (SIT)
-
-| Score | Criterio |
-|------:|----------|
-| 1 | El tema se infiere; casi nunca se formula |
-| 2 | Algún comentario temático ligero, sin lección |
-| 3 | Temas visibles pero no sermoneados |
-| 4 | Narrador o diálogo filosofan la moraleja a menudo |
-| 5 | Cierre o arco con **lección explícita**; moral muy articulado |
-
-**Pregunta ancla:** ¿El texto articula sus temas/morales de forma explícita?
+Inspiración StoryScope (estructura discursiva, no estilo), **redefinida para tesis/papers**.
 
 ---
 
-## 2. Unidad temática / subplots (PLT)
+## 1. Overclaim hortatorio / moralina
 
 | Score | Criterio |
 |------:|----------|
-| 1 | Varios subplots que contrastan o enriquecen el tema |
-| 2 | Subplots temáticamente paralelos claros |
-| 3 | Un subplot menor o digresiones controladas |
-| 4 | Casi un solo hilo; digresiones solo decorativas |
-| 5 | Track único; “todo sirve al mismo punto” sin ramas |
+| 1 | Claims mesurados; el valor social no sermonea |
+| 2 | Algún lenguaje valorativo controlado |
+| 3 | Mixto: rigor + frases exhortativas |
+| 4 | Inclusión/innovación/justicia se repiten como lección |
+| 5 | Cierre tipo manifiesto (“nadie quede excluido… motor de una sociedad más justa”) |
 
-**Pregunta ancla:** ¿Hay subplots reales o solo una trama cerrada?
+**Ancla:** ¿El texto predica una moral en vez de argumentar un aporte investigable?
 
 ---
 
-## 3. Agencia y resolución (PLT / EVT)
+## 2. Monorriel argumental vs tensiones
 
 | Score | Criterio |
 |------:|----------|
-| 1 | Cierre por azar externo / destino / sin resolución |
-| 2 | Mixto; mucha ambigüedad de quién decide |
-| 3 | Agencia compartida; final algo abierto |
-| 4 | Protagonista resuelve en gran medida |
-| 5 | Resolución por **elección del protagonista** + **aceptación/entendimiento interno** limpio |
+| 1 | Varias líneas (p. ej. pedagógica / laboral / técnica) con prioridades distintas |
+| 2 | Al menos un contraargumento o trade-off desarrollado |
+| 3 | Un hilo dominante con digresiones menores |
+| 4 | Casi todo empuja a la misma conclusión-solución |
+| 5 | Monorriel total: cada párrafo refuerza el mismo pitch |
 
-**Pregunta ancla:** ¿El final lo mueve la voluntad del protagonista o fuerzas externas/ambigüedad?
+**Ancla:** ¿Pueden conflictuar lecturas del problema, o todo es un solo riel?
 
 ---
 
-## 4. Cadena causal / tidy plot (EVT)
+## 3. Cierre teleológico del problema
 
 | Score | Criterio |
 |------:|----------|
-| 1 | Cabos sueltos, causas opacas, desorden productivo |
-| 2 | Varias rupturas causales o elipsis fuertes |
-| 3 | Mayormente causal con algún salto |
-| 4 | Cadena clara con pocos flecos |
-| 5 | Continuidad causal alta: incidente → consecuencias → cierre ordenado |
+| 1 | El problema queda abierto; la solución es parcial |
+| 2 | Se admite que otras intervenciones pueden ser mejores en X casos |
+| 3 | Solución central con matices |
+| 4 | La propuesta “resuelve” casi todo el drama planteado |
+| 5 | Arco completo: exclusión → dispositivo → inclusión restaurada |
 
-**Pregunta ancla:** ¿Qué tan continua y “limpia” es la cadena del conflicto?
+**Ancla:** ¿El artefacto cierra narrativamente el problema social?
 
 ---
 
-## 5. Temporalidad (TMP / REV)
+## 4. Cadena causal demasiado limpia
 
 | Score | Criterio |
 |------:|----------|
-| 1 | Anacronía dominante; revelaciones que reescriben lo leído |
-| 2 | Flashbacks/forwards frecuentes y estructurales |
-| 3 | Algún salto temporal significativo |
-| 4 | Casi lineal con un flashback ornamental |
-| 5 | Lineal estricto (p. ej. misterio del primer clue al gran reveal) |
+| 1 | Condiciones, excepciones, mecanismos inciertos |
+| 2 | Varios eslabones dudosos explicitados |
+| 3 | Causalidad mayormente clara con algún hueco |
+| 4 | Problema → síntomas → oportunidad → solución casi sin fricción |
+| 5 | Cadena publicitaria sin mecanismos falsables |
 
-**Pregunta ancla:** ¿El tiempo salta y recontextualiza, o avanza en línea?
+**Ancla:** ¿Hay fricción causal o solo escalera hacia el prototipo?
 
 ---
 
-## 6. Expresión emocional (AGENT)
+## 5. Propósito-promesa vs propósito-medible
 
 | Score | Criterio |
 |------:|----------|
-| 1 | Emociones nombradas / ambiguas / conductuales sin somaticismo |
-| 2 | Mezcla; etiquetas frecuentes |
-| 3 | Equilibrio cuerpo / etiqueta |
-| 4 | Predomina lo corporal (garganta, pecho, sudor…) |
-| 5 | Emoción casi siempre vía **metáfora corporal**; casi nunca “tuvo miedo” |
+| 1 | Propósito = diseñar/validar con alcance, métricas e hipótesis implícitas |
+| 2 | Escenarios de uso como *casos de prueba*, no promesas |
+| 3 | Mixto visión + objetivos |
+| 4 | Escenas aspiracionales dominan (entrevista perfecta, “voz clara”, etc.) |
+| 5 | Propósito = promesa de experiencia fluida / transformación cultural |
 
-*Nota StoryScope: IA eleva “embodied”; humanos usan más etiquetas explícitas.*
+**Ancla:** ¿Se puede evaluar el éxito con criterios de investigación?
 
 ---
 
-## 7. Sensorialidad y setting como espejo (SET)
+## 6. Hedging y límites metodológicos
 
 | Score | Criterio |
 |------:|----------|
-| 1 | Setting utilitario; sensorial mínimo |
-| 2 | Algo de atmósfera sin psicologizar el espacio |
-| 3 | Sensorial moderado; espejo psicológico puntual |
-| 4 | Ambiente refleja estados internos a menudo; sensorial rico |
-| 5 | Setting-espejo sistemático + densidad sensorial alta (p. ej. olfato frecuente) |
+| 1 | Hedging frecuente; limitaciones operativas y de validez |
+| 2 | Límites claros en alcance geográfico, muestra, léxico, red, etc. |
+| 3 | Algo de hedging sin sistematizar |
+| 4 | Certeza alta; límites apenas ceremoniales |
+| 5 | Cero fricción: “intuitivo”, “inmediato”, “sin barreras” |
+
+**Ancla:** ¿Dónde puede fallar el claim?
 
 ---
 
-## 8. Intertextualidad (SIT)
+## 7. Anclaje local / datos situados
 
 | Score | Criterio |
 |------:|----------|
-| 1 | Referencias **nombradas** a obras/autores/marcas/lugares reales |
-| 2 | Mix equilibrado nombre + eco |
-| 3 | Algunas alusiones sin anclar |
-| 4 | Casi solo ecos difusos |
-| 5 | Ninguna ancla externa concreta; atmósfera “literaria genérica” |
+| 1 | Lugar, población, dialecto/LSP, instituciones o cifras concretas |
+| 2 | Anclaje local + comparación internacional cuidadosa |
+| 3 | Local nombrado pero genérico |
+| 4 | “Latinoamérica / la sociedad” sin grano fino |
+| 5 | Solo panorama global abstracto |
 
-*Si el género no permite intertexto (p. ej. informe técnico), marca N/A.*
+**Ancla:** ¿Se nota el sitio y el caso, o podría ser cualquier ciudad?
 
 ---
 
-## 9. Lectura / cuarta pared (PER / SIT)
+## 8. Intertexto nombrado vs ecos genéricos
 
 | Score | Criterio |
 |------:|----------|
-| 1 | Dirige al lector de forma estructural (“tú”, “querido lector”) |
-| 2 | Apartes frecuentes al lector |
-| 3 | Algún guiño metatextual |
-| 4 | Casi nunca rompe la cuarta pared |
-| 5 | Narración sellada: nadie “mira” al lector |
+| 1 | Autores, años, venues o normas nombradas y usadas |
+| 2 | Mix de citas densas + síntesis |
+| 3 | Algunas citas + frases “la literatura indica” |
+| 4 | Mayoría de ecos (“estudios demuestran”) |
+| 5 | Autoridad fantasma sin anclas bibliográficas |
+
+*En sección sin expectativa de citas (p. ej. solo objetivos formales), valora según lo esperable o marca N/A.*
 
 ---
 
-## 10. Polaridad moral del protagonista (PLT)
+## 9. Homogeneidad de voz / plantilla
 
 | Score | Criterio |
 |------:|----------|
-| 1 | Claramente ambivalente / mixto en sus elecciones |
-| 2 | Ambivalencia dominante con momentos claros |
-| 3 | Moralidad mixta sin énfasis |
-| 4 | Mayormente héroe o villano legible |
-| 5 | Polaridad moral **clara** (positivo o negativo sin fricción)
+| 1 | Variación útil de densidad, énfasis y estructura entre subsecciones |
+| 2 | Alguna irregularidad de autor (sin caos) |
+| 3 | Bastante uniforme pero con matices |
+| 4 | Párrafos intercambiables tipo plantilla de posgrado |
+| 5 | Misma cadencia exhortativa en todo el capítulo |
+
+**Ancla:** ¿Podrías reordenar párrafos sin que nadie note el cambio de sección?
+
+---
+
+## 10. Trade-offs y riesgos omitidos
+
+| Score | Criterio |
+|------:|----------|
+| 1 | Riesgos, costos ocultos, falsos positivos, privacidad, dependencia del dispositivo |
+| 2 | Al menos un trade-off serio discutido |
+| 3 | Riesgos mencionados de paso |
+| 4 | Solo beneficios + RSE / imagen institucional |
+| 5 | Tecnología como bien puro sin reverso |
+
+**Ancla:** ¿Qué puede salir mal si el piloto “funciona”?
 
 ---
 
 ## Agregación
 
 ```
-dimensiones_válidas = {i | score_i ≠ N/A}
-AI_likeness = mean(scores válidos)          # 1..5
-AI_pct = (AI_likeness - 1) / 4 * 100        # 0..100
+válidas = dimensiones con score ≠ N/A
+AI_likeness = mean(válidas)                 # 1..5
+AI_pct = (AI_likeness - 1) / 4 * 100       # 0..100
 ```
 
-## Señales a ignorar en este audit
+## Señales fuera de alcance (ignorar)
 
-Em-dashes, palabras “IA” de moda, formalidad genérica, listas con tres ítems, ritmo de frase — **fuera de alcance** salvo que el usuario pida explícitamente un pase de estilo aparte.
+Em-dashes, “delve/tapestry”, perfect grammar, listas de tres ítems, tono formal genérico, presencia de IA como *tema* del trabajo.

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-25T16:59:17.482Z",
+  "generatedAt": "2026-09-25T17:56:20.789Z",
   "owner": "eleoromario",
   "repo": "agent-skills",
   "package": "eleoromario/agent-skills",
@@ -510,8 +510,8 @@
       "id": "storyscope-ai-audit",
       "name": "storyscope-ai-audit",
       "title": "Storyscope Ai Audit",
-      "description": "Audits fiction or narrative prose for AI-likeness using StoryScope discourse-level narrative signals (thematic explicitness, causal tidiness, temporality, agency, intertext, reader address)—not brittle style tells like em-dashes. Use when the user asks if a text is AI-written, wants an AI vs human narrative score, StoryScope audit, detector narrativo, or to evaluate how AI-like a story/essay is.",
-      "excerpt": "<! argument hint: [pegar texto | ruta de archivo | \"compara A vs B\"] Evalúa textos con las señales narrativas del paper StoryScope (Russell et al., arXiv:2604.03136). No es un…",
+      "description": "Audits academic research writing (theses, papers, proposals, Cap. I–III style sections) for AI-likeness using discourse-level structural signals inspired by StoryScope—argument tidiness, hortatory overclaim, missing tensions/limits, generic vs named citations, promotional vision vs measurable purpose—not brittle style tells. Use when evaluating if a tesis, paper, planteamiento, justificación, marco or academic chapter sounds AI-written, or to score AI-likeness of research prose.",
+      "excerpt": "<! argument hint: [pegar texto | ruta PDF/MD | capítulo | \"compara A vs B\"] Evalúa prosa de investigación profesional (tesis de posgrado, papers, planes de transformación digital,…",
       "categories": [
         "narrative"
       ],
